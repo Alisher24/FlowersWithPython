@@ -1,7 +1,6 @@
-class Flowers:
-    def __init__(self, id, name):
-        self.id = id
-        self.name = name
+from dataclasses import dataclass
 
-    def get_info(self):
-        return [self.id, self.name]    
+@dataclass(frozen=True)
+class Flowers:
+    id: int
+    name: str   

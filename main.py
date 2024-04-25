@@ -12,27 +12,27 @@ flower3 = flower.Flowers(3, "Ромашка")
 flower4 = flower.Flowers(4, "Пионы")
 flower5 = flower.Flowers(5, "Гортензия")
 
-flowerInStock1 = flowerInStock.FlowersInStock(1, flower1, 100, 100)
-flowerInStock2 = flowerInStock.FlowersInStock(2, flower2, 100, 100)
-flowerInStock3 = flowerInStock.FlowersInStock(3, flower3, 100, 100)
+flowerInStock1 = flowerInStock.FlowersInStock(1, flower1, 100, 100, datetime.datetime(2024, 4, 25, 12, 10))
+flowerInStock2 = flowerInStock.FlowersInStock(2, flower2, 100, 100, datetime.datetime(2024, 4, 25, 12, 10))
+flowerInStock3 = flowerInStock.FlowersInStock(3, flower3, 100, 100, datetime.datetime(2024, 4, 24, 12, 10))
 
 provider1 = provider.Provider(1, "Ashot")
 provider2 = provider.Provider(2, "Pashot")
 provider3 = provider.Provider(3, "Andrey")
 
-flowersOfProvider1 = flowersOfProvider.FlowersOfProvider(1, 1, {flower1: [1000, 50], flower2: [5000, 50], flower3: [10000, 50]})
-flowersOfProvider2 = flowersOfProvider.FlowersOfProvider(2, 2, {flower1: [1000, 60], flower2: [5000, 60], flower3: [10000, 60]})
-flowersOfProvider3 = flowersOfProvider.FlowersOfProvider(3, 3, {flower1: [1000, 70], flower2: [5000, 70], flower3: [10000, 70]})
+flowersOfProvider1 = flowersOfProvider.FlowersOfProvider(1, provider1, {flower1: (1000, 50), flower2: (1000, 100), flower3: (1000, 100)})
+flowersOfProvider2 = flowersOfProvider.FlowersOfProvider(2, provider2, {flower1: (1000, 60), flower2: (5000, 60), flower3: (10000, 60)})
+flowersOfProvider3 = flowersOfProvider.FlowersOfProvider(3, provider3, {flower1: (1000, 70), flower2: (5000, 70), flower3: (10000, 70)})
 
 florist1 = florist.Florists(1, "Masha", datetime.date(2002, 11, 1), 10)
 florist2 = florist.Florists(2, "Sasha", datetime.date(2002, 11, 1), 10)
 
-bouquet1 = bouquet.Bouquet(1, "51 роза", flowerInStock1.unitPrice * 51)
-bouquet2 = bouquet.Bouquet(2, "51 лилия", flowerInStock2.unitPrice * 51)
-bouquet3 = bouquet.Bouquet(3, "51 ромашка", flowerInStock3.unitPrice * 51)
+bouquet1 = bouquet.Bouquet(1, "51 роза", flowerInStock1.unitPrice * 51, florist1)
+bouquet2 = bouquet.Bouquet(2, "51 лилия", flowerInStock2.unitPrice * 51, florist1)
+bouquet3 = bouquet.Bouquet(3, "51 ромашка", flowerInStock3.unitPrice * 51, florist2)
 
 delivery1 = delivery.Delivery(provider1, 1, datetime.datetime(2024, 4, 26, 12, 30), True, "")
-delivery1 = delivery.Delivery(provider2, 2, datetime.datetime(2024, 4, 26, 13, 30), True, "Сделать фотов")
+delivery1 = delivery.Delivery(provider2, 2, datetime.datetime(2024, 4, 26, 13, 30), True, "Сделать фото")
 
 bouquetRep = bouquetRepository.BouquetRepository()
 clientRep = clientsRepository.ClientRepository()
