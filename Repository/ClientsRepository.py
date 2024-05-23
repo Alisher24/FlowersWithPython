@@ -14,6 +14,12 @@ class ClientRepository(FakeRepository.FakeRepository):
                 if c.id == client.id:
                     self.clients.remove(c)
 
+    def update(self, client):
+        exists_client = self.get_by_id(client.id)
+        if exists_client:
+            self.clients.remove(exists_client)
+            self.clients.append(client)
+
     def get_all(self):
         return self.clients
 
@@ -22,4 +28,4 @@ class ClientRepository(FakeRepository.FakeRepository):
             for c in self.clients:
                 if c.id == id:
                     return c
-        return "Клиент по данному id не найден"
+        return None

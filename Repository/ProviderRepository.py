@@ -14,6 +14,12 @@ class ProviderRepository(FakeRepository.FakeRepository):
                 if p.id == provider.id:
                     self.providers.remove(p)
 
+    def update(self, provider):
+        exists_provider = self.get_by_id(provider.id)
+        if exists_provider:
+            self.providers.remove(exists_provider)
+            self.providers.append(provider)
+
     def get_all(self):
         return self.providers
 
@@ -22,4 +28,4 @@ class ProviderRepository(FakeRepository.FakeRepository):
             for p in self.providers:
                 if p.id == id:
                     return p
-        return "Доставка по данному id не найдена"
+        return None

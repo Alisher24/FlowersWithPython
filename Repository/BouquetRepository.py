@@ -1,5 +1,4 @@
 from Repository import FakeRepository as fakeRepository
-
 class BouquetRepository(fakeRepository.FakeRepository):
 
     def __init__(self):
@@ -14,6 +13,12 @@ class BouquetRepository(fakeRepository.FakeRepository):
                 if b.id == bouquet.id:
                     self.bouquets.remove(b)
 
+    def update(self, bouquet):
+        exists_bouquet = self.get_by_id(bouquet.id)
+        if exists_bouquet:
+            self.bouquets.remove(exists_bouquet)
+            self.bouquets.append(bouquet)
+
     def get_all(self):
         return self.bouquets
 
@@ -22,4 +27,4 @@ class BouquetRepository(fakeRepository.FakeRepository):
             for b in self.bouquets:
                 if b.id == id:
                     return b
-        return "Букет по данному id не найден"
+        return None

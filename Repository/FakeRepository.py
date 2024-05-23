@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 
 class FakeRepository(ABC):
 
-    def __init__(self):
-        pass
+    def __init__(self, file_path):
+        self.file_path = file_path
 
     @abstractmethod
     def add(self, item):
@@ -15,9 +15,15 @@ class FakeRepository(ABC):
         pass
 
     @abstractmethod
+    def update(self):
+        pass
+
+    @abstractmethod
     def get_all(self):
         pass
 
     @abstractmethod
-    def get_by_id(self, name):
+    def get_by_id(self):
         pass
+
+    

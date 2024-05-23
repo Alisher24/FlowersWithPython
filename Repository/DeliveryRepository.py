@@ -14,6 +14,12 @@ class DeliveryRepository(FakeRepository.FakeRepository):
                 if d.id == delivery.id:
                     self.allDelivery.remove(d)
 
+    def update(self, delivery):
+        exists_delivery = self.get_by_id(delivery.id)
+        if exists_delivery:
+            self.allDelivery.remove(exists_delivery)
+            self.allDelivery.append(delivery)
+
     def get_all(self):
         return self.allDelivery
 
@@ -22,4 +28,4 @@ class DeliveryRepository(FakeRepository.FakeRepository):
             for d in self.allDelivery:
                 if d.id == id:
                     return d
-        return "Доставка по данному id не найдена"
+        return None

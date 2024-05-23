@@ -14,6 +14,12 @@ class FloristRepository(FakeRepository.FakeRepository):
                 if f.id == florist.id:
                     self.florists.remove(f)
 
+    def update(self, florist):
+        exists_florist = self.get_by_id(florist.id)
+        if exists_florist:
+            self.florists.remove(exists_florist)
+            self.florists.append(florist)
+
     def get_all(self):
         return self.florists
 
@@ -22,4 +28,4 @@ class FloristRepository(FakeRepository.FakeRepository):
             for f in self.florists:
                 if f.id == id:
                     return f
-        return "Флорист по данному id не найден"
+        return None

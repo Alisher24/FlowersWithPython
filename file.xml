@@ -1,0 +1,31 @@
+<data>
+	<clients>
+		<client>
+			<id>0</id>
+			<name>Alisher</name>
+			<discount>5</discount>
+		</client>
+	</clients>
+	<flowers>
+		<flower>
+			<id>0</id>
+			<name>Rose</name>
+		</flower>
+	</flowers>
+	<florists>
+		<florist>
+			<id>0</id>
+			<name>Ashot</name>
+			<birthday>2002-11-01</birthday>
+			<numberOfCollectedBouquets>10</numberOfCollectedBouquets>
+		</florist>
+	</florists>
+	<bouquets>
+		<bouquet>
+			<id>0</id>
+			<name>101 Rose</name>
+			<price>5000</price>
+			<florist>&lt;Models.Florists.Florists object at 0x000002603B0FD690&gt;</florist>
+		</bouquet>
+	</bouquets>
+</data>
