@@ -7,3 +7,10 @@ class Client(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     discount = Column(Float)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'discount': self.discount
+        }

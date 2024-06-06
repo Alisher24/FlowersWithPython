@@ -2,10 +2,10 @@ import warnings
 import datetime
 
 from DBModels.Florist import Florist
-from Repository import FakeRepository
+from DBRepository.BaseRepository import BaseRepository
 
 class FloristsProcedure:
-    def __init__(self, florist_repository: FakeRepository):
+    def __init__(self, florist_repository: BaseRepository):
         self.florist_repository = florist_repository
 
     def get_florist(self, id: int) -> Florist:

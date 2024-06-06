@@ -8,3 +8,11 @@ class Florist(Base):
     name = Column(String)
     birthday = Column(Date)
     numberOfCollectedBouquets = Column(Integer)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'birthday': self.birthday,
+            'numberOfCollectedBouquets': self.numberOfCollectedBouquets
+        }

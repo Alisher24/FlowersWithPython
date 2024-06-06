@@ -8,3 +8,11 @@ class Delivery(Base):
     date = Column(DateTime)
     paymentState = Column(Boolean)
     wish = Column(String)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'date': self.date,
+            'paymentState': self.paymentState,
+            'wish': self.wish
+        }

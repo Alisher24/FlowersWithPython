@@ -11,3 +11,12 @@ class FlowersInStock(Base):
     unitPrice = Column(Float)
     date = Column(DateTime)
     flower = relationship("Flower", foreign_keys=[flower_id])
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'flower_id': self.flower_id,
+            'count': self.count,
+            'unitPrice': self.unitPrice,
+            'date': self.date
+        }

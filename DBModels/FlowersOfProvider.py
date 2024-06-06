@@ -11,3 +11,11 @@ class FlowersOfProvider(Base):
     price = Column(Float)
     provider = relationship("Provider", foreign_keys=[provider_id])
     flower = relationship("Flower", foreign_keys=[flower_id])
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'provider_id': self.provider_id,
+            'flower_id': self.flower_id,
+            'price': self.price
+        }

@@ -10,3 +10,11 @@ class Bouquet(Base):
     name = Column(String)
     price = Column(Integer)
     florist = relationship("Florist", foreign_keys=[florist_id])
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'florist_id': self.florist_id,
+            'name': self.name,
+            'price': self.price,
+        }
