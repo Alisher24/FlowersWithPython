@@ -1,7 +1,7 @@
 import warnings
 import datetime
 
-from Models.Delivery import Delivery
+from DBModels.Delivery import Delivery
 from Repository import FakeRepository
 
 class DeliveryProcedure:
@@ -26,10 +26,10 @@ class DeliveryProcedure:
         else:
             warnings.warn("Доставка с данным id не существует", UserWarning)
 
-    def remove_delivery(self, delivery: Delivery):
-        romove_delivery = self.get_delivery(delivery.id)
+    def remove_delivery(self, delivery_id):
+        romove_delivery = self.get_delivery(delivery_id)
         if romove_delivery:
-            self.delivery_repository.remove(romove_delivery)
+            self.delivery_repository.remove(delivery_id)
         else: 
              warnings.warn("Данной доставки не существует", UserWarning)
     

@@ -1,6 +1,6 @@
 import warnings
 
-from Models.Provider import Provider
+from DBModels.Provider import Provider
 from Repository import FakeRepository
 
 class ProviderProcedure:
@@ -25,10 +25,10 @@ class ProviderProcedure:
         else:
             warnings.warn("Поставщика с данным id не существует", UserWarning)
 
-    def remove_provider(self, provider: Provider):
-        romove_provider = self.get_provider(provider.id)
+    def remove_provider(self, provider_id):
+        romove_provider = self.get_provider(provider_id)
         if romove_provider:
-            self.provider_repository.remove(romove_provider)
+            self.provider_repository.remove(provider_id)
         else: 
              warnings.warn("Данного поставщика не существует", UserWarning)
     

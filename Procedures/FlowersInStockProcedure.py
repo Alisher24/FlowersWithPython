@@ -1,8 +1,8 @@
 import warnings
 import datetime
 
-from Models.FlowersInStock import FlowersInStock
-from Models.Flowers import Flowers
+from DBModels.FlowersInStock import FlowersInStock
+from DBModels.Flower import Flower
 from Repository import FakeRepository
 
 class FlowersInStockProcedure:
@@ -12,25 +12,25 @@ class FlowersInStockProcedure:
     def get_flowersInStock(self, id: int) -> FlowersInStock:
         return self.flowersInStock_repository.get_by_id(id)
     
-    def add_flowersInStock(self, id: int, flowers: Flowers, count: int, unitPrice: float, date: datetime):
+    def add_flowersInStock(self, id: int, flower_id: int, count: int, unitPrice: float, date: datetime):
         if self.get_flowersInStock(id):
             warnings.warn("Цветок с данным id уже существует", UserWarning)
         else:
-            flowersInStock = FlowersInStock(id=id, flowers=flowers, count=count, unitPrice=unitPrice, date=date)
+            flowersInStock = FlowersInStock(id=id, flower_id=flower_id, count=count, unitPrice=unitPrice, date=date)
             self.flowersInStock_repository.add(flowersInStock)
     
-    def update_flowersInStock(self, id: int, flowers: Flowers, count: int, unitPrice: float, date: datetime):
+    def update_flowersInStock(self, id: int, flower_id: int, count: int, unitPrice: float, date: datetime):
         flowersInStock = self.get_flowersInStock(id)
         if flowersInStock:
-            update_flowersInStock = FlowersInStock(id=id, flowers=flowers, count=count, unitPrice=unitPrice, date=date)
+            update_flowersInStock = FlowersInStock(id=id, flower_id=flower_id, count=count, unitPrice=unitPrice, date=date)
             self.flowersInStock_repository.update(update_flowersInStock)
         else:
             warnings.warn("Цветок с данным id не существует", UserWarning)
 
-    def remove_flowersInStock(self, flowersInStock: FlowersInStock):
-        romove_flowersInStock = self.get_flowersInStock(flowersInStock.id)
+    def remove_flowersInStock(self, flowersInStock_id):
+        romove_flowersInStock = self.get_flowersInStock(flowersInStock_id)
         if romove_flowersInStock:
-            self.flowersInStock_repository.remove(romove_flowersInStock)
+            self.flowersInStock_repository.remove(flowersInStock_id)
         else: 
              warnings.warn("Данного цветока не существует", UserWarning)
     

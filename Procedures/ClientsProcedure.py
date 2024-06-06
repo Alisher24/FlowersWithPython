@@ -1,10 +1,10 @@
 import warnings
 
-from Models.Clients import Client
-from Repository import FakeRepository
+from DBModels.Client import Client
+from DBRepository.BaseRepository import BaseRepository
 
 class ClientProcedure:
-    def __init__(self, client_repository: FakeRepository):
+    def __init__(self, client_repository: BaseRepository):
         self.client_repository = client_repository
 
     def get_client(self, id: int) -> Client:
@@ -25,10 +25,10 @@ class ClientProcedure:
         else:
             warnings.warn("Клиент с данным id не существует", UserWarning)
 
-    def remove_client(self, client: Client):
-        romove_client = self.get_client(client.id)
+    def remove_client(self, client_id):
+        romove_client = self.get_client(client_id)
         if romove_client:
-            self.client_repository.remove(romove_client)
+            self.client_repository.remove(client_id)
         else: 
              warnings.warn("Данный клиент не существует", UserWarning)
     
